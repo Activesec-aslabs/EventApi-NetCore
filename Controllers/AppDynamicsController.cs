@@ -113,6 +113,30 @@ namespace AppDynamicsAPI.Controllers
             return response.Content;
         }
 
+         [HttpGet("DeleteSchema/{schema}")]
+        public async Task<string> DeleteSchema(string schema)
+        {
+            string url = this.analyticsURL + "events/schema/" + schema;
+            var client = new RestClient(url);
+            client.Authenticator = new HttpBasicAuthenticator(this.username, this.password);
+            var request = new RestRequest(Method.DELETE);
+            request.AddHeader("X-Events-API-AccountName",this.globalAccount);
+            request.AddHeader("X-Events-API-Key",this.apiKey);
+           // request.AddHeader("Content-type", "application/vnd.appd.events+json;v=2");
+            request.AddHeader("Accept","application/vnd.appd.events+json;v=2");
+            
+            IRestResponse response = await client.ExecuteAsync(request);
+
+            if (response.IsSuccessful)
+            {
+                Console.WriteLine(response.Content);
+            }else{
+                Console.WriteLine(response.Content);
+            }
+            
+            return response.Content;
+        }
+
         public void GetValuesFromYAML()
         {
            // string filepath = "";
