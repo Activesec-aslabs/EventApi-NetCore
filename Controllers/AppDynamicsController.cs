@@ -47,22 +47,17 @@ namespace AppDynamicsAPI.Controllers
         [HttpGet("CreateSchema/{schema}")]
         public async Task<string> GetCreateSchema(string schema)
         {
-           //  = "testMB";
-           //PostMethod();
             string url = this.analyticsURL + "events/schema/" + schema ;
             var client = new RestClient(url);
             client.AddDefaultHeader("X-Events-API-AccountName",this.globalAccount);
             client.AddDefaultHeader("X-Events-API-Key",this.apiKey);
-           // client.AddDefaultHeader("Content-type", "application/vnd.appd.events+json;v=2");
             client.AddDefaultHeader("Accept","application/vnd.appd.events+json;v=2");
             
-            //client.Authenticator = new HttpBasicAuthenticator(this.username, this.password);
             var request = new RestRequest(Method.POST);
             request.AddHeader("X-Events-API-AccountName",this.globalAccount);
             request.AddHeader("X-Events-API-Key",this.apiKey);
             request.AddHeader("Content-type", "application/vnd.appd.events+json;v=2");
-          //  request.AddHeader("Accept","application/vnd.appd.events+json;v=2");
-
+          
             using (StreamReader file = System.IO.File.OpenText(@"jsonFiles\test.json"))
             using (JsonTextReader reader = new JsonTextReader(file))
             {
