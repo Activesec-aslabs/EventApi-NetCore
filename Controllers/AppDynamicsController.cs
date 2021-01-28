@@ -122,7 +122,6 @@ namespace AppDynamicsAPI.Controllers
             var request = new RestRequest(Method.DELETE);
             request.AddHeader("X-Events-API-AccountName",this.globalAccount);
             request.AddHeader("X-Events-API-Key",this.apiKey);
-           // request.AddHeader("Content-type", "application/vnd.appd.events+json;v=2");
             request.AddHeader("Accept","application/vnd.appd.events+json;v=2");
             
             IRestResponse response = await client.ExecuteAsync(request);
