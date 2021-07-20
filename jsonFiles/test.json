@@ -1,7 +1,9 @@
 {
     "schema" : {
-       "account": "integer",
-       "amount": "float",
-       "product": "string"
+       "appEnv": "string",
+       "tierName": "string",
+       "metricType": "string",
+       "metricName": "string",
+       "metricDefinition": "string"
     }
  }

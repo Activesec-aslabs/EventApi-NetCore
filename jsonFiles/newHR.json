@@ -1,0 +1,67 @@
+{
+    "name": "OMH_Health_custom/idm|AR|POS|/forgot-password",
+    "enabled": true,
+    "useDataFromLastNMinutes": 30,
+    "waitTimeAfterViolation": 30,
+    "scheduleName": "Always",
+    "affects": { "affectedEntityType": "SERVERS", "serverSelectionCriteria": { "selectServersBy": "AFFECTED_SERVERS", "affectedServers": { "severSelectionScope": "SPECIFIC_SERVERS", "servers": ["rgadyapprd57362-java-MA"] } } },
+    "evalCriterias": {
+        "criticalCriteria": {
+            "conditionAggregationType": "ALL",
+            "conditionExpression": null,
+            "conditions": [
+                {
+                    "name": "%Error",
+                    "shortName": "A",
+                    "evaluateToTrueOnNoData": true,
+                    "evalDetail": {
+                        "evalDetailType": "METRIC_EXPRESSION",
+                        "metricExpression": "100 - ({A}/({A}+{B}+{C}+{D}+{E}+{F}+{G})*100)",
+                        "metricExpressionVariables": [
+                            { "variableName": "A", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_OK" },
+                            { "variableName": "B", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_BADREQUEST" },
+                            { "variableName": "C", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_ERRORSERVER" },
+                            { "variableName": "D", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_OTHER" },
+                            { "variableName": "E", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_SERVERNOTFOUND" },
+                            { "variableName": "F", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_FORBIDDEN" },
+                            { "variableName": "G", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_SERVER_TIMEOUT" }
+                        ],
+                        "metricEvalDetail": { "metricEvalDetailType": "SPECIFIC_TYPE", "compareCondition": "GREATER_THAN_SPECIFIC_VALUE", "compareValue": 30 }
+                    },
+                    "triggerEnabled": false,
+                    "minimumTriggers": 15
+                }
+            ],
+            "evalMatchingCriteria": null
+        },
+        "warningCriteria": {
+            "conditionAggregationType": "ALL",
+            "conditionExpression": null,
+            "conditions": [
+                {
+                    "name": "%Error",
+                    "shortName": "A",
+                    "evaluateToTrueOnNoData": true,
+                    "evalDetail": {
+                        "evalDetailType": "METRIC_EXPRESSION",
+                        "metricExpression": "100 - ({A}/({A}+{B}+{C}+{D}+{E}+{F}+{G})*100)",
+                        "metricExpressionVariables": [
+                            { "variableName": "A", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_OK" },
+                            { "variableName": "A", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_OK" },
+                            { "variableName": "B", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_BADREQUEST" },
+                            { "variableName": "C", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_ERRORSERVER" },
+                            { "variableName": "D", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_OTHER" },
+                            { "variableName": "E", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_SERVERNOTFOUND" },
+                            { "variableName": "F", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_CODE_FORBIDDEN" },
+                            { "variableName": "G", "metricAggregateFunction": "SUM", "metricPath": "Custom Metrics|OMH_2.0|PROD|AR|POS|custom|idm|/forgot-password|REP_SERVER_TIMEOUT" }
+                        ],
+                        "metricEvalDetail": { "metricEvalDetailType": "SPECIFIC_TYPE", "compareCondition": "GREATER_THAN_SPECIFIC_VALUE", "compareValue": 15 }
+                    },
+                    "triggerEnabled": false,
+                    "minimumTriggers": 15
+                }
+            ],
+            "evalMatchingCriteria": null
+        }
+    }
+}
